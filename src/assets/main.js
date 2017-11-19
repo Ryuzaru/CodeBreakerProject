@@ -4,7 +4,7 @@ let attempt = document.getElementById('attempt');
 function guess() {
     let input = document.getElementById('user-guess');
 
-    if(answer.value == "" || attempt.value == "") {
+    if(answer.value == '' || attempt.value == '') {
       setHiddenFields();
     }
 
@@ -12,16 +12,17 @@ function guess() {
       return;
     }
     attempt.value++;
+
     if(getResults(input.value)) {
-      setMessage("You Win! :)");
+      setMessage('You Win! :)');
       showAnswer(true);
       showReplay();
     } else if(attempt.value >= 10) {
-      setMessage("You Lose! :("));
+      setMessage('You Lose! :('));
       showAnswer(false);
       showReplay();
     } else {
-      setMessage("Incorrect")
+      setMessage('Incorrect, try again.');
     }
 }
 
@@ -33,12 +34,12 @@ function getResults(input) {
     } else if(answer.value.indexOf(input.charAt(i)) > -1) {
       html += '<span class="glyphicon glyphicon-transfer"></span>';
     } else {
-      html += '<span class="glyphicon glyphicon-remove"></span>'
+      html += '<span class="glyphicon glyphicon-remove"></span>';
     }
 
   }
   html += '</div></div>';
-  document.getElementById("results").innerHTML += html;
+  document.getElementById('results').innerHTML += html;
   if (input == answer.value) {
     return true;
   }
@@ -54,15 +55,15 @@ function setHiddenFields() {
 }
 
 function setMessage(message) {
-  document.getElementById("message").innerHTML = message;
+  document.getElementById('message').innerHTML = message;
 }
 
 function showAnswer(success) {
-  let code = document.getElementById("code");
+  let code = document.getElementById('code');
   if(success) {
-    code.className += " success";
+    code.className += ' success';
   } else {
-    code.className += " failure";
+    code.className += ' failure';
   }
   code.innerHTML = answer.value;
 }
